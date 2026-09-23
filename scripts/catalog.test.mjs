@@ -18,7 +18,7 @@ function sample() {
   const entry = {
     id: rule.id, version: rule.version, name: {...rule.name},
     source: rule.source, courses: [...rule.courses],
-    path: 'examples/demo-gmail.json', demo: true,
+    path: 'examples/DEMO1000/demo-gmail.json', demo: true,
     sha256: createHash('sha256').update(raw).digest('hex'),
   };
   return {
@@ -35,6 +35,12 @@ function validate(catalog, files) {
 test('accepts matching metadata and the digest of the raw file', () => {
   const {catalog, files} = sample();
   assert.doesNotThrow(() => validate(catalog, files));
+});
+test('accepts course and shared folders but rejects a folder for another course',()=>{
+ for(const folder of ['DEMO1000','shared']){
+  const {catalog,files}=sample(),entry=catalog.rules[0],raw=files.get(entry.path);files.clear();entry.path=`examples/${folder}/demo-gmail.json`;files.set(entry.path,raw);assert.doesNotThrow(()=>validate(catalog,files));
+ }
+ const {catalog,files}=sample(),entry=catalog.rules[0],raw=files.get(entry.path);files.clear();entry.path='examples/DEMO2000/demo-gmail.json';files.set(entry.path,raw);assert.throws(()=>validate(catalog,files),/course/);
 });
 
 test('rejects whitespace-only file changes even when parsed JSON is identical', () => {
@@ -67,7 +73,7 @@ test('rejects missing, extra, and repeated entries', () => {
   assert.throws(() => validate({...catalog, rules: []}, files), /coverage/);
   assert.throws(() => validate(catalog, new Map()), /file/);
   assert.throws(() => validate({...catalog, rules: [...catalog.rules, ...catalog.rules]}, files), /duplicate/);
-  const extra = {...catalog.rules[0], path: 'examples/another.json'};
+  const extra = {...catalog.rules[0], path: 'examples/DEMO1000/another.json'};
   files.set(extra.path, files.get(catalog.rules[0].path));
   assert.throws(() => validate({...catalog, rules: [...catalog.rules, extra]}, files), /duplicate.*id/);
 });

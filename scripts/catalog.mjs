@@ -17,9 +17,9 @@ export function validateCatalog(catalog, files) {
   const paths = new Set(), ids = new Set();
   for (const entry of catalog.rules) {
     requireKeys(entry, ['id', 'version', 'name', 'source', 'courses', 'path', 'demo', 'sha256'], 'entry');
-    if (typeof entry.path !== 'string' || !/^examples\/[a-z0-9-]+\.json$/.test(entry.path)) {
-      throw new Error('Catalog path must be an examples/<name>.json file');
-    }
+    const folder=/^examples\/(shared|[A-Z]{2,10}\d{3,6})\/[a-z0-9-]+\.json$/.exec(entry.path);
+    if (!folder) throw new Error('Catalog path must be an examples/<course>/<name>.json file');
+    if(folder[1]&&folder[1]!=='shared'&&!entry.courses?.includes(folder[1]))throw new Error('Catalog courses do not match folder');
     if (paths.has(entry.path)) throw new Error(`Catalog duplicate path: ${entry.path}`);
     if (ids.has(entry.id)) throw new Error(`Catalog duplicate id: ${entry.id}`);
     paths.add(entry.path);

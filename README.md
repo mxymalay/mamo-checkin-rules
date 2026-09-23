@@ -12,18 +12,22 @@ These examples target compatible source-rule builds of [Mamo Check-in](https://g
 
 | Package | Source / courses | Demonstrates | Fixtures |
 | --- | --- | --- | --- |
-| [demo-gmail.json](examples/demo-gmail.json) | Gmail / DEMO1000 | `.summary img` with dimension limits | [7 cases](fixtures/demo-gmail/) |
-| [demo-moodle.json](examples/demo-moodle.json) | Moodle / DEMO1000 | Literal navigation/context keywords and author-image exclusion | [7 cases](fixtures/demo-moodle/) |
-| [demo-ed.json](examples/demo-ed.json) | Ed / DEMO1000 | Images plus existing Ed attachment-link selectors | [7 cases](fixtures/demo-ed/) |
-| [demo-shared-gmail.json](examples/demo-shared-gmail.json) | Gmail / DEMO1000, DEMO2000 | One layout shared by two explicitly listed courses | [9 cases](fixtures/demo-shared-gmail/) |
+| [demo-gmail.json](examples/DEMO1000/demo-gmail.json) | Gmail / DEMO1000 | `.summary img` with dimension limits | [7 cases](fixtures/demo-gmail/) |
+| [demo-moodle.json](examples/DEMO1000/demo-moodle.json) | Moodle / DEMO1000 | Literal navigation/context keywords and author-image exclusion | [7 cases](fixtures/demo-moodle/) |
+| [demo-ed.json](examples/DEMO1000/demo-ed.json) | Ed / DEMO1000 | Images plus existing Ed attachment-link selectors | [7 cases](fixtures/demo-ed/) |
+| [demo-shared-gmail.json](examples/shared/demo-shared-gmail.json) | Gmail / DEMO1000, DEMO2000 | One layout shared by two explicitly listed courses | [9 cases](fixtures/demo-shared-gmail/) |
 
-The original three example IDs and files remain unchanged. The shared demo tests both courses, empty/unverified-course rejection and author-image exclusion. Single-course demos reject DEMO2000 as the wrong course. Every demo covers missing images, decoration, quoted content, separate messages and prohibited hosts. Ed attachment selectors illustrate the allowed format; these fixtures do not prove actual attachment downloads or OCR.
+The example IDs and rule contents remain unchanged; files now live in course folders. The shared demo tests both courses, empty/unverified-course rejection and author-image exclusion. Single-course demos reject DEMO2000 as the wrong course. Every demo covers missing images, decoration, quoted content, separate messages and prohibited hosts. Ed attachment selectors illustrate the allowed format; these fixtures do not prove actual attachment downloads or OCR.
 
 Open [docs/demo.html](docs/demo.html) from a local checkout for an English/Chinese walkthrough. It is a static offline explanation, not an extension screenshot or live attendance page. No scripts, remote images, forms, login or submission are involved.
 
 ### Find, Import and Choose
 
-1. Open **Settings > Recognition + modules card > Rule library** in a compatible extension.
+Examples are grouped under `examples/DEMO1000/`; rules supporting multiple courses live under `examples/shared/`. Choose the corresponding course filter in Community downloads or Local imports. A shared rule appears under each supported course.
+
+Personal configuration exports include complete imported rule JSON and course bindings, not only IDs. Restore does not need a community download, even if the remote file is unavailable. Practice data is excluded. In Local imports, **Create rule > Simulated creation** opens the isolated practice environment; **Actual creation** uses your configured courses and verified source pages. A downloaded DEMO1000 package cannot be tested on another course: developer testing requires a matching configured course and enabled source.
+
+1. Open **Settings > Recognition + rules card > Course recognition rules** in a compatible extension.
 2. **Built-in** lists extension-owned rules. They remain available in production; imports cannot replace them.
 3. **Community downloads** lists the extension's bundled static catalogue. Review source, courses, version and demo label before explicitly choosing to download/install. There is no remote catalogue polling or automatic update service.
 4. **Local imports** accepts a manually selected rule JSON. Manual import is **always local**, even for files from this repository or with the same ID as a community download. Import an `examples/` file, not `catalog.json`.
@@ -70,10 +74,10 @@ The harness is offline: it never executes fixture scripts, loads image resources
 
 Root [catalog.json](catalog.json) has `{ "schemaVersion": 1, "rules": [...] }`. Every entry contains exactly `id`, `version`, `name: {en, zh_CN, zh_TW}`, `source`, `courses`, `path`, `demo`, `sha256`.
 
-`path` is a repository-relative `examples/<name>.json` path, never a URL. `sha256` is 64 lowercase hexadecimal characters: SHA-256 of the **raw UTF-8 JSON file bytes**, including whitespace and the final newline, not canonicalized or re-serialized JSON:
+`path` is a repository-relative `examples/<course>/<name>.json` or `examples/shared/<name>.json` path, never a URL. `sha256` is 64 lowercase hexadecimal characters: SHA-256 of the **raw UTF-8 JSON file bytes**, including whitespace and the final newline, not canonicalized or re-serialized JSON:
 
 ```sh
-shasum -a 256 examples/demo-gmail.json
+shasum -a 256 examples/DEMO1000/demo-gmail.json
 ```
 
 Maintainers copy this catalogue into the extension as bundled metadata. The consumer contract is to fetch only `https://raw.githubusercontent.com/mxymalay/mamo-checkin-rules/main/{path}` after an explicit user action, enforce a **64 KiB response limit and 10-second timeout**, **omit credentials**, and **reject redirects**. Before installation it must verify the raw digest, package ID and version, then validate the rule format. A changed file requires updated bundled metadata; a mismatch fails closed. This repository's validator does not download files or implement the installer.
@@ -96,10 +100,10 @@ Submit JSON, sanitized fixtures and the catalogue entry for review, with expecte
 
 | 示例 | 来源与课程 | 重点 |
 | --- | --- | --- |
-| [demo-gmail.json](examples/demo-gmail.json) | Gmail / DEMO1000 | 图片选择器与尺寸限制；7 个样例 |
-| [demo-moodle.json](examples/demo-moodle.json) | Moodle / DEMO1000 | 字面导航/上下文关键词、排除作者图片；7 个样例 |
-| [demo-ed.json](examples/demo-ed.json) | Ed / DEMO1000 | 图片与现有附件链接选择器；7 个样例 |
-| [demo-shared-gmail.json](examples/demo-shared-gmail.json) | Gmail / DEMO1000、DEMO2000 | 两门课程共享布局；9 个样例 |
+| [demo-gmail.json](examples/DEMO1000/demo-gmail.json) | Gmail / DEMO1000 | 图片选择器与尺寸限制；7 个样例 |
+| [demo-moodle.json](examples/DEMO1000/demo-moodle.json) | Moodle / DEMO1000 | 字面导航/上下文关键词、排除作者图片；7 个样例 |
+| [demo-ed.json](examples/DEMO1000/demo-ed.json) | Ed / DEMO1000 | 图片与现有附件链接选择器；7 个样例 |
+| [demo-shared-gmail.json](examples/shared/demo-shared-gmail.json) | Gmail / DEMO1000、DEMO2000 | 两门课程共享布局；9 个样例 |
 
 原有三个示例的 ID 与文件内容保持不变。共享示例分别测试两门课程，拒绝未验证/空课程并排除作者图片；单课程示例将 DEMO2000 作为错误课程。各示例覆盖缺图、装饰图、引用、独立消息边界、禁止的图片域名。Ed 示例展示附件选择器格式，不代表已验证真实附件下载或 OCR。
 
@@ -107,7 +111,11 @@ Submit JSON, sanitized fixtures and the catalogue entry for review, with expecte
 
 ### 查找、导入与选择
 
-1. 打开 **设置 > 识别与模块卡片 > 规则库**。
+单课程示例位于 `examples/DEMO1000/`，多课程共用规则位于 `examples/shared/`。在社区下载或本地导入中选择对应课程标签；共享规则会出现在各个支持课程下。
+
+个人配置导出包含完整的已导入规则 JSON 和课程绑定，不是只有 ID；恢复无需再次下载，即使社区文件不可用也能导入。练习数据不包含在内。在本地导入选择 **创建规则 > 模拟创建** 进入隔离练习，选择 **实际创建** 使用已配置课程和验证后的来源页面。下载的 DEMO1000 示例不能使用其他课程测试；开发者测试需要配置对应课程并开启相同来源。
+
+1. 打开 **设置 > 识别与规则卡片 > 课程识别规则库**。
 2. **内置**（Built-in）展示扩展自带规则，生产使用时仍然保留；导入包不能替换内置规则。
 3. **社区下载**（Community downloads）展示随扩展打包的静态目录。先检查平台、课程、版本和演示标记，再由用户明确选择下载/安装。没有远程目录轮询或自动更新。
 4. **本地导入**（Local imports）用于手动选择规则 JSON。手动导入**始终属于本地**，即使文件来自本仓库或与社区包 ID 相同。导入 `examples/` 中的文件，不是 `catalog.json`。
@@ -147,9 +155,9 @@ npm test
 
 ### 静态目录与发布
 
-根目录 `catalog.json` 格式为 `{ "schemaVersion": 1, "rules": [...] }`。条目字段为 `id`、`version`、`name: {en, zh_CN, zh_TW}`、`source`、`courses`、`path`、`demo`、`sha256`。`path` 只能是仓库相对路径 `examples/<名称>.json`，不能是网址。
+根目录 `catalog.json` 格式为 `{ "schemaVersion": 1, "rules": [...] }`。条目字段为 `id`、`version`、`name: {en, zh_CN, zh_TW}`、`source`、`courses`、`path`、`demo`、`sha256`。`path` 只能是仓库相对路径 `examples/<课程>/<名称>.json` 或 `examples/shared/<名称>.json`，不能是网址。
 
-`sha256` 是**原始 UTF-8 JSON 文件字节**的 64 位小写十六进制 SHA-256，包含空白和末尾换行，不是重新序列化后的 JSON。可运行 `shasum -a 256 examples/demo-gmail.json` 查看；修改缩进或换行也需要更新摘要。
+`sha256` 是**原始 UTF-8 JSON 文件字节**的 64 位小写十六进制 SHA-256，包含空白和末尾换行，不是重新序列化后的 JSON。可运行 `shasum -a 256 examples/DEMO1000/demo-gmail.json` 查看；修改缩进或换行也需要更新摘要。
 
 维护者把目录复制进扩展作为打包元数据。消费者仅在用户明确操作后，从固定地址 `https://raw.githubusercontent.com/mxymalay/mamo-checkin-rules/main/{path}` 下载，限制 **64 KiB、10 秒**，**不携带凭据、拒绝重定向**；安装前验证原始摘要、ID、版本与规则格式。不匹配必须拒绝；文件变更需要同步打包目录。仓库验证器本身不下载文件或实现安装器。
 
