@@ -1,9 +1,9 @@
 {
   "format": 1,
   "files": {
-    "toolkit/format.js": "5b601fb47a5d7127b47ee93f080fa7216a5c0447f4901ecce8b23a3601f7bbf6",
+    "toolkit/format.js": "4931c9e11c683614b35061f97fdff5b8997ec2fe65693e5a27da95fee4f0a5e1",
     "toolkit/runtime.js": "7fdd34fd0a23e7cbce98719015af5f019ab067de2b06e6ab8905502b9683bbfe",
-    "toolkit/schema.json": "75992ffc14ec6587c4e22dbb1b74741dbcc1afbb55fc290c20dec53849fa33b8",
+    "toolkit/schema.json": "e36e86dc465c58e22100acde8ec6864dbc21a575dc7f59d4efcadbd070f33e38",
     "toolkit/validate.mjs": "9b07b50319a8e53e530d92ac621610a22925fb2d2e924a12cd56903e88bc2d42"
   }
 }

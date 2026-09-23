@@ -1,1 +1,31 @@
-{"schemaVersion":1,"id":"community.example.shared-gmail-images","version":"1.0.0","name":{"en":"Synthetic shared Gmail example","zh_CN":"Gmail 多课程合成示例","zh_TW":"Gmail 多課程合成範例"},"source":"gmail","courses":["DEMO1000","DEMO2000"],"images":{"selectors":[".summary img"],"excludeSelectors":[".author img"],"minWidth":30,"minHeight":20,"maxHeight":2000}}
+{
+  "schemaVersion": 1,
+  "id": "community.example.shared-gmail-images",
+  "version": "1.0.1",
+  "name": {
+    "en": "Synthetic shared Gmail example",
+    "zh_CN": "Gmail 多课程合成示例",
+    "zh_TW": "Gmail 多課程合成範例"
+  },
+  "source": "gmail",
+  "courses": [
+    "DEMO1000",
+    "DEMO2000"
+  ],
+  "images": {
+    "selectors": [
+      ".summary img"
+    ],
+    "excludeSelectors": [
+      ".author img"
+    ],
+    "minWidth": 30,
+    "minHeight": 20,
+    "maxHeight": 2000
+  },
+  "author": {
+    "name": "mxymalay",
+    "url": "https://github.com/mxymalay"
+  },
+  "sourceUrl": "https://github.com/mxymalay/mamo-checkin-rules/blob/main/examples/shared/demo-shared-gmail.json"
+}

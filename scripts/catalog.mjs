@@ -16,7 +16,7 @@ export function validateCatalog(catalog, files) {
   }
   const paths = new Set(), ids = new Set();
   for (const entry of catalog.rules) {
-    requireKeys(entry, ['id', 'version', 'name', 'source', 'courses', 'path', 'demo', 'sha256'], 'entry');
+    requireKeys(entry, ['id', 'version', 'name', 'source', 'courses', 'path', 'demo', 'sha256',...['author','sourceUrl'].filter(key=>Object.hasOwn(entry||{},key))], 'entry');
     const folder=/^examples\/(shared|[A-Z]{2,10}\d{3,6})\/[a-z0-9-]+\.json$/.exec(entry.path);
     if (!folder) throw new Error('Catalog path must be an examples/<course>/<name>.json file');
     if(folder[1]&&folder[1]!=='shared'&&!entry.courses?.includes(folder[1]))throw new Error('Catalog courses do not match folder');
@@ -39,7 +39,7 @@ export function validateCatalog(catalog, files) {
       throw new Error(`Catalog sha256 mismatch: ${entry.path}`);
     }
     const rule = JSON.parse(raw.toString('utf8'));
-    for (const key of ['id', 'version', 'name', 'source', 'courses']) {
+    for (const key of ['id', 'version', 'name', 'source', 'courses','author','sourceUrl']) {
       if (!isDeepStrictEqual(entry[key], rule[key])) {
         throw new Error(`Catalog ${key} mismatch: ${entry.path}`);
       }

@@ -3,6 +3,7 @@ import {createHash} from 'node:crypto';
 import {spawnSync} from 'node:child_process';
 import {runValidation} from '../toolkit/validate.mjs';
 import {validateCatalog} from './catalog.mjs';
+import {validateRule} from '../toolkit/format.js';
 const root=new URL('../',import.meta.url),toolkit=new URL('../toolkit/',import.meta.url);
 const tests=spawnSync(process.execPath,['--test','scripts/catalog.test.mjs'],{cwd:root,stdio:'inherit'});
 if(tests.error)throw tests.error;
@@ -13,6 +14,11 @@ for(const [path,hash] of Object.entries(manifest.files)){
  if(createHash('sha256').update(await readFile(new URL(path,root))).digest('hex')!==hash)throw new Error('Toolkit checksum mismatch: '+path);
 }
 const files=new Map();
+for(const source of ['gmail','moodle','ed']){
+ const rule=validateRule(JSON.parse(await readFile(new URL('builtin/'+source+'.json',root),'utf8')),{builtin:true});
+ if(rule.id!=='builtin.'+source||rule.source!==source||rule.author?.url!=='https://github.com/mxymalay'||rule.sourceUrl!=='https://github.com/mxymalay/mamo-checkin-rules/blob/main/builtin/'+source+'.json')throw new Error('Invalid published built-in: '+source);
+ console.log('PASS published built-in: '+source);
+}
 for(const folder of await readdir(new URL('examples/',root),{withFileTypes:true})){
  if(!folder.isDirectory())throw new Error('Examples must be grouped in course folders');
  if(!/^(shared|[A-Z]{2,10}\d{3,6})$/.test(folder.name))throw new Error('Invalid course folder');

@@ -1,1 +1,32 @@
-{"schemaVersion":1,"id":"community.example.ed-images","version":"1.0.0","name":{"en":"Synthetic Ed example","zh_CN":"Ed 合成示例","zh_TW":"Ed 合成範例"},"source":"ed","courses":["DEMO1000"],"images":{"selectors":[".summary img"],"minWidth":30,"minHeight":20,"maxHeight":4000},"attachments":{"selectors":["a[href*='edusercontent.com/files/']"]}}
+{
+  "schemaVersion": 1,
+  "id": "community.example.ed-images",
+  "version": "1.0.1",
+  "name": {
+    "en": "Synthetic Ed example",
+    "zh_CN": "Ed 合成示例",
+    "zh_TW": "Ed 合成範例"
+  },
+  "source": "ed",
+  "courses": [
+    "DEMO1000"
+  ],
+  "images": {
+    "selectors": [
+      ".summary img"
+    ],
+    "minWidth": 30,
+    "minHeight": 20,
+    "maxHeight": 4000
+  },
+  "attachments": {
+    "selectors": [
+      "a[href*='edusercontent.com/files/']"
+    ]
+  },
+  "author": {
+    "name": "mxymalay",
+    "url": "https://github.com/mxymalay"
+  },
+  "sourceUrl": "https://github.com/mxymalay/mamo-checkin-rules/blob/main/examples/DEMO1000/demo-ed.json"
+}

@@ -3,6 +3,19 @@ export class RuleValidationError extends Error {
 }
 const fail=(code,path)=>{throw new RuleValidationError(code,path);};
 const str=(v,path)=>{if(typeof v!=='string'||!v.trim()||[...v].length>256)fail('string',path);return v;};
+export function validateRuleURL(value,path='$.sourceUrl'){
+  if(typeof value!=='string'||value.length>2048||/[\s\\]/.test(value)||!/^https?:\/\//i.test(value))fail('url',path);
+  let url;try{url=new URL(value);}catch{fail('url',path);}
+  if(!url.hostname||url.username||url.password)fail('url',path);
+  return value;
+}
+export function validateRuleMetadata(value){
+  if(value.author!==undefined){
+    if(typeof value.author==='string'){str(value.author,'$.author');if(/^[a-z][a-z0-9+.-]*:/i.test(value.author))validateRuleURL(value.author,'$.author');}
+    else{object(value.author,['name','url'],'$.author');str(value.author.name,'$.author.name');if(value.author.url!==undefined)validateRuleURL(value.author.url,'$.author.url');}
+  }
+  if(value.sourceUrl!==undefined)validateRuleURL(value.sourceUrl);
+}
 export function validateRuleId(value,{builtin=false}={}){
   if(typeof value!=='string')fail('id-type','$.id');
   if(!value.trim())fail('id-empty','$.id');
@@ -41,7 +54,8 @@ export function validateSelector(value,path='$.selector'){
   return value;
 }
 export function validateRule(value,{builtin=false}={}){
-  object(value,['schemaVersion','id','version','name','source','courses','keywords','images','attachments'],'$');
+  object(value,['schemaVersion','id','version','name','author','sourceUrl','source','courses','keywords','images','attachments'],'$');
+  validateRuleMetadata(value);
   if(value.schemaVersion!==1)fail('schema-version','$.schemaVersion');
   validateRuleId(value.id,{builtin});
   if(typeof value.version!=='string'||!/^\d{1,6}\.\d{1,6}\.\d{1,6}$/.test(value.version))fail('version','$.version');

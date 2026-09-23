@@ -10,6 +10,8 @@
     "schemaVersion": {"const": 1},
     "id": {"type": "string", "minLength": 1, "maxLength": 256, "pattern": "^(?!.*(?:builtin|demo))[a-z][a-z0-9]*(?:[.-][a-z0-9]+)+(?![\\s\\S])"},
     "version": {"type": "string", "pattern": "^\\d{1,6}\\.\\d{1,6}\\.\\d{1,6}$"},
+    "author": {"oneOf": [{"$ref": "#/definitions/text"}, {"type": "object", "additionalProperties": false, "required": ["name"], "properties": {"name": {"$ref": "#/definitions/text"}, "url": {"$ref": "#/definitions/webUrl"}}}]},
+    "sourceUrl": {"$ref": "#/definitions/webUrl"},
     "name": {"type": "object", "additionalProperties": false, "required": ["en"], "properties": {"en": {"$ref": "#/definitions/text"}, "zh_CN": {"$ref": "#/definitions/text"}, "zh_TW": {"$ref": "#/definitions/text"}}},
     "source": {"enum": ["gmail", "moodle", "ed"]},
     "courses": {"type": "array", "minItems": 1, "maxItems": 20, "uniqueItems": true, "items": {"type": "string", "pattern": "^[A-Z]{2,10}\\d{3,6}$"}},
@@ -22,6 +24,7 @@
     "attachments": {"type": "object", "additionalProperties": false, "required": ["selectors"], "properties": {"selectors": {"$ref": "#/definitions/selectors"}}}
   },
   "definitions": {
+    "webUrl": {"type": "string", "maxLength": 2048, "pattern": "^https?://[^\\s\\\\@]+$"},
     "text": {"type": "string", "minLength": 1, "maxLength": 256, "pattern": "\\S"},
     "selector": {"type": "string", "allOf": [{"$ref": "#/definitions/text"}], "format": "mamo-selector"},
     "words": {"type": "array", "maxItems": 20, "uniqueItems": true, "items": {"$ref": "#/definitions/text"}},

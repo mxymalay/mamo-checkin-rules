@@ -56,6 +56,21 @@ Tests check catalogue regressions, toolkit checksums, rule schema/runtime valida
 
 ### Format and Boundaries
 
+Optional attribution is displayed consistently in every library section:
+
+```json
+{
+  "author": {"name": "mxymalay", "url": "https://github.com/mxymalay"},
+  "sourceUrl": "https://github.com/mxymalay/mamo-checkin-rules/blob/main/examples/DEMO1000/demo-gmail.json"
+}
+```
+
+`author` also accepts a plain name (text only), a webpage URL (clickable), or an object with only `name`. `sourceUrl` is the public rule file page, not a download/update endpoint. Both links open only after a click; they never change the fixed community download host. URLs allow HTTP/HTTPS, up to 2048 characters, with no credentials, whitespace or backslashes. Metadata is self-declared, not verified authorship. Keep attribution identical in catalogue and package; update the version and SHA-256 after edits.
+
+The [builtin/](builtin/) directory publishes the extension's built-in JSON for inspection only. These trusted defaults have reserved IDs and cannot be imported as local/community rules or overridden by a download.
+
+作者信息为可选字段：`author` 可填纯文字、网页地址，或包含 `name` 和可选 `url` 的对象；`sourceUrl` 填规则文件的公开网页。三个规则库页面统一展示，只有点击才打开，不会自动访问或替换固定下载地址。作者信息由规则作者自行声明，不代表身份认证。修改后需同步目录、提高规则版本并更新摘要。`builtin/` 为内置规则的公开查阅副本，不允许作为本地或社区规则导入。
+
 Required rule fields: `schemaVersion: 1`, `id`, `version`, `name.en`, `source`, `courses`, `images.selectors`. Chinese names are optional in the rule format; catalogue demos provide `en`, `zh_CN` and `zh_TW`.
 
 - Sources: `gmail`, `moodle`, `ed`; one source per package.

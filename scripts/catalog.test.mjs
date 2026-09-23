@@ -49,6 +49,14 @@ test('accepts matching metadata and the digest of the raw file', () => {
   const {catalog, files} = sample();
   assert.doesNotThrow(() => validate(catalog, files));
 });
+test('attribution is optional but must match the downloaded file exactly',()=>{
+ const {catalog,files}=sample(),entry=catalog.rules[0];
+ entry.author={name:'mxymalay',url:'https://github.com/mxymalay'};entry.sourceUrl='https://github.com/mxymalay/mamo-checkin-rules/blob/main/'+entry.path;
+ const raw=Buffer.from(JSON.stringify({...rule,author:entry.author,sourceUrl:entry.sourceUrl})+'\n');
+ files.set(entry.path,raw);entry.sha256=createHash('sha256').update(raw).digest('hex');
+ assert.equal(validate(catalog,files),1);
+ entry.author.name='Wrong author';assert.throws(()=>validate(catalog,files),/author mismatch/);
+});
 test('accepts course and shared folders but rejects a folder for another course',()=>{
  for(const folder of ['DEMO1000','shared']){
   const {catalog,files}=sample(),entry=catalog.rules[0],raw=files.get(entry.path);files.clear();entry.path=`examples/${folder}/demo-gmail.json`;files.set(entry.path,raw);assert.doesNotThrow(()=>validate(catalog,files));
