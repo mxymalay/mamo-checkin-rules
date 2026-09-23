@@ -1,0 +1,1 @@
+{"schemaVersion":1,"id":"community.demo1000.ed-images","version":"1.0.0","name":{"en":"Synthetic Ed example","zh_CN":"Ed 合成示例","zh_TW":"Ed 合成範例"},"source":"ed","courses":["DEMO1000"],"images":{"selectors":[".summary img"],"minWidth":30,"minHeight":20,"maxHeight":4000},"attachments":{"selectors":["a[href*='edusercontent.com/files/']"]}}

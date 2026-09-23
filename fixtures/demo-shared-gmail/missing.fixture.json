@@ -1,0 +1,8 @@
+{
+  "source": "gmail",
+  "course": "DEMO2000",
+  "url": "https://mail.google.com/",
+  "html": "<main><div class=\"summary\">No image</div></main>",
+  "expected": [],
+  "expectedReasons": ["selector-miss"]
+}

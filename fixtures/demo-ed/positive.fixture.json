@@ -1,0 +1,10 @@
+{
+  "source": "ed",
+  "course": "DEMO1000",
+  "url": "https://edstem.org/au/courses/1/discussion/2",
+  "isThread": true,
+  "html": "<main><div class=\"summary\"><img src=\"https://cdn.edusercontent.com/wanted.png\" width=\"40\" height=\"30\" ></div></main>",
+  "expected": [
+    "https://cdn.edusercontent.com/wanted.png"
+  ]
+}

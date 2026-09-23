@@ -1,0 +1,9 @@
+{
+  "format": 1,
+  "files": {
+    "toolkit/format.js": "7adee62c86daa86a10c6f90d10dc5a8675b8ec0345819da7243b006a44f00edc",
+    "toolkit/runtime.js": "7c099f13db97f4557994ed7c50fa58f9be558a1d92c229d7dec22c66d95c6383",
+    "toolkit/schema.json": "90bbad3d599772a46e45675908eec9000d0fe0f36e3b863ebb4ae462c2cbd21b",
+    "toolkit/validate.mjs": "9b07b50319a8e53e530d92ac621610a22925fb2d2e924a12cd56903e88bc2d42"
+  }
+}

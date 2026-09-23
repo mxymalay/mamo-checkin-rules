@@ -1,0 +1,8 @@
+{
+  "source": "ed",
+  "course": "DEMO2000",
+  "url": "https://edstem.org/au/courses/1/discussion/2",
+  "isThread": true,
+  "html": "<main><div class=\"summary\"><img src=\"https://cdn.edusercontent.com/wrong.png\" width=\"40\" height=\"30\" ></div></main>",
+  "expected": []
+}

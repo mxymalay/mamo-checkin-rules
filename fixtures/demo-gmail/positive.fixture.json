@@ -1,0 +1,10 @@
+{
+  "source": "gmail",
+  "course": "DEMO1000",
+  "url": "https://mail.google.com/",
+  "isThread": true,
+  "html": "<main><div class=\"summary\"><img src=\"https://mail.google.com/wanted.png\" width=\"40\" height=\"30\" ></div></main>",
+  "expected": [
+    "https://mail.google.com/wanted.png"
+  ]
+}

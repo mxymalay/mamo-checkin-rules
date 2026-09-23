@@ -1,0 +1,9 @@
+{
+  "name": "mamo-checkin-rules",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {"test": "node scripts/validate.mjs"},
+  "engines": {"node": ">=22"},
+  "devDependencies": {"ajv": "^8.18.0", "jsdom": "^26.1.0"}
+}

@@ -1,0 +1,8 @@
+{
+  "source": "gmail",
+  "course": "DEMO1000",
+  "url": "https://mail.google.com/",
+  "html": "<main><div class=\"summary\"><img src=\"https://mail.google.com/avatar.png\" width=\"40\" height=\"30\" alt=\"avatar\"></div></main>",
+  "expected": [],
+  "expectedReasons": ["decorative"]
+}

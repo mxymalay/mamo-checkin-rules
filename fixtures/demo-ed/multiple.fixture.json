@@ -1,0 +1,12 @@
+{
+  "source": "ed",
+  "course": "DEMO1000",
+  "url": "https://edstem.org/au/courses/1/discussion/2",
+  "isThread": true,
+  "html": "<main data-message><div class=\"summary\"><img src=\"https://cdn.edusercontent.com/one.png\" width=\"40\" height=\"30\" ></div></main><aside><img src=\"https://cdn.edusercontent.com/outside.png\"></aside><main data-message><div class=\"summary\"><img src=\"https://cdn.edusercontent.com/two.png\" width=\"40\" height=\"30\" ></div></main>",
+  "root": "[data-message]",
+  "expected": [
+    "https://cdn.edusercontent.com/one.png",
+    "https://cdn.edusercontent.com/two.png"
+  ]
+}

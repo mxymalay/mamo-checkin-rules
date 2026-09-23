@@ -1,0 +1,12 @@
+{
+  "source": "gmail",
+  "course": "DEMO1000",
+  "url": "https://mail.google.com/",
+  "isThread": true,
+  "html": "<main data-message><div class=\"summary\"><img src=\"https://mail.google.com/one.png\" width=\"40\" height=\"30\" ></div></main><aside><img src=\"https://mail.google.com/outside.png\"></aside><main data-message><div class=\"summary\"><img src=\"https://mail.google.com/two.png\" width=\"40\" height=\"30\" ></div></main>",
+  "root": "[data-message]",
+  "expected": [
+    "https://mail.google.com/one.png",
+    "https://mail.google.com/two.png"
+  ]
+}

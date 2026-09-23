@@ -1,0 +1,11 @@
+{
+  "source": "gmail",
+  "course": "DEMO1000",
+  "url": "https://mail.google.com/",
+  "isThread": true,
+  "html": "<main><div class=\"summary\"><img src=\"https://learning.monash.edu.evil.test/p.png\" width=\"40\" height=\"30\"></div></main>",
+  "expected": [],
+  "expectedReasons": [
+    "host"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "source": "gmail",
+  "course": "DEMO1000",
+  "url": "https://mail.google.com/",
+  "isThread": true,
+  "html": "<main><div class=\"summary\">No image</div></main>",
+  "expected": [],
+  "expectedReasons": [
+    "selector-miss"
+  ]
+}

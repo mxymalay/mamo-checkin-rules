@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "rules": [
+    {
+      "id": "community.demo1000.ed-images",
+      "version": "1.0.0",
+      "name": {"en": "Synthetic Ed example", "zh_CN": "Ed 合成示例", "zh_TW": "Ed 合成範例"},
+      "source": "ed",
+      "courses": ["DEMO1000"],
+      "path": "examples/demo-ed.json",
+      "demo": true,
+      "sha256": "4602011fd3bdf858e58a2c6aa9e9733b0b192e72a42ec28eae2df1aaebd920d9"
+    },
+    {
+      "id": "community.demo1000.gmail-images",
+      "version": "1.0.0",
+      "name": {"en": "Synthetic Gmail example", "zh_CN": "Gmail 合成示例", "zh_TW": "Gmail 合成範例"},
+      "source": "gmail",
+      "courses": ["DEMO1000"],
+      "path": "examples/demo-gmail.json",
+      "demo": true,
+      "sha256": "7fe9ccfc6c0f4118a980de08e5355dc2a18d75987f99c61f066c7183eff3f043"
+    },
+    {
+      "id": "community.demo1000.moodle-images",
+      "version": "1.0.0",
+      "name": {"en": "Synthetic Moodle example", "zh_CN": "Moodle 合成示例", "zh_TW": "Moodle 合成範例"},
+      "source": "moodle",
+      "courses": ["DEMO1000"],
+      "path": "examples/demo-moodle.json",
+      "demo": true,
+      "sha256": "399c0860225c4fa7d28fff8ea289b93c368d3fea0cee36567e4df6ca1a2174a3"
+    },
+    {
+      "id": "community.demo.shared-gmail-images",
+      "version": "1.0.0",
+      "name": {"en": "Synthetic shared Gmail example", "zh_CN": "Gmail 多课程合成示例", "zh_TW": "Gmail 多課程合成範例"},
+      "source": "gmail",
+      "courses": ["DEMO1000", "DEMO2000"],
+      "path": "examples/demo-shared-gmail.json",
+      "demo": true,
+      "sha256": "a9ffe1ece5d53b8f72b00f8ec788e207a4ceefa094157174a91f37174d76be11"
+    }
+  ]
+}

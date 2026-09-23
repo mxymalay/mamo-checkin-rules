@@ -1,0 +1,10 @@
+{
+  "source": "moodle",
+  "course": "DEMO1000",
+  "url": "https://learning.monash.edu/",
+  "isThread": true,
+  "html": "<main><div class=\"summary\"><img src=\"https://learning.monash.edu/wanted.png\" width=\"40\" height=\"30\" ></div></main>",
+  "expected": [
+    "https://learning.monash.edu/wanted.png"
+  ]
+}

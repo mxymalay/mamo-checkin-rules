@@ -1,0 +1,11 @@
+{
+  "source": "gmail",
+  "course": "DEMO1000",
+  "url": "https://mail.google.com/",
+  "isThread": true,
+  "html": "<main><div class=\"summary\"><blockquote><img src=\"https://mail.google.com/old.png\" width=\"40\" height=\"30\" ></blockquote></div></main>",
+  "expected": [],
+  "expectedReasons": [
+    "quoted"
+  ]
+}
