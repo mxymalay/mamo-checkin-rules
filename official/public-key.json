@@ -1,0 +1,10 @@
+{
+  "keyId": "official-v1",
+  "algorithm": "ECDSA-P256-SHA256",
+  "jwk": {
+    "kty": "EC",
+    "crv": "P-256",
+    "x": "nt-LdQb0ANTUSv1Ta91Y3UA3YQxZQaCb2Pjirw5f9IY",
+    "y": "v4TP55tpKf2tgzjeFw6h5QKdO-yBaxbSpf8709KQFhc"
+  }
+}

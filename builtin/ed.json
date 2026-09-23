@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "id": "builtin.ed",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": {
-    "en": "Built-in Ed",
-    "zh_CN": "内置 Ed",
-    "zh_TW": "內建 Ed"
+    "en": "Official Ed",
+    "zh_CN": "官方 Ed",
+    "zh_TW": "官方 Ed"
   },
   "source": "ed",
   "courses": [],

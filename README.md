@@ -4,6 +4,8 @@ Declarative JSON packages that help Mamo Check-in locate attendance images insid
 
 [English](#english) | [中文](#中文) | [Offline demo walkthrough](docs/demo.html) | [Catalogue](catalog.json)
 
+**Official automatic updates:** Compatible builds now support a separate [signed official rule channel](official/README.md). This does not automatically install or update shared/local packages. / **官方自动更新：** 支持此功能的扩展可使用独立的[签名官方规则通道](official/README.md)，不会自动安装或更新共享、本地规则。
+
 ## English
 
 ### Status and Demos

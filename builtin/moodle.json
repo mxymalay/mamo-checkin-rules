@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "id": "builtin.moodle",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": {
-    "en": "Built-in Moodle",
-    "zh_CN": "内置 Moodle",
-    "zh_TW": "內建 Moodle"
+    "en": "Official Moodle",
+    "zh_CN": "官方 Moodle",
+    "zh_TW": "官方 Moodle"
   },
   "source": "moodle",
   "courses": [],

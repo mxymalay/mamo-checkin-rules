@@ -1,5 +1,11 @@
 # Rule Authoring Instructions
 
+## Official Release Channel
+
+The separately approved official update channel is documented in `official/README.md`. Its signed JSON data is distinct from the bundled shared catalogue described below. Official releases may update trusted `builtin.*` rules after signature verification; ordinary imports still cannot. Never change `official/public-key.json` as a substitute for the extension's pinned key. Private signing keys must never enter this repository. Validate both examples and official signatures with `npm test`. A changed official file requires a freshly signed, strictly higher release sequence and matching archive. Publishing still requires explicit user authorization.
+
+官方签名通道见 `official/README.md`，与下文共享目录分开。普通导入仍不能覆盖官方规则。修改官方文件须重新签名、递增发布序号并保存归档；公钥文件不能替代扩展内固定的公钥。私钥禁止入库。发布仍须用户明确授权。
+
 ## English
 
 Rules are bounded data for an image locator, not scripts or automation workflows.

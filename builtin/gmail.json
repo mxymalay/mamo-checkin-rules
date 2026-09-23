@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "id": "builtin.gmail",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": {
-    "en": "Built-in Gmail",
-    "zh_CN": "内置 Gmail",
-    "zh_TW": "內建 Gmail"
+    "en": "Official Gmail",
+    "zh_CN": "官方 Gmail",
+    "zh_TW": "官方 Gmail"
   },
   "source": "gmail",
   "courses": [],
