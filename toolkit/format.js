@@ -3,6 +3,14 @@ export class RuleValidationError extends Error {
 }
 const fail=(code,path)=>{throw new RuleValidationError(code,path);};
 const str=(v,path)=>{if(typeof v!=='string'||!v.trim()||[...v].length>256)fail('string',path);return v;};
+export function validateRuleId(value,{builtin=false}={}){
+  if(typeof value!=='string')fail('id-type','$.id');
+  if(!value.trim())fail('id-empty','$.id');
+  if([...value].length>256)fail('id-length','$.id');
+  if(!builtin&&/builtin|demo/i.test(value))fail('id-reserved','$.id');
+  if(!/^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)+(?![\s\S])/.test(value))fail('id-format','$.id');
+  return value;
+}
 function object(v,keys,path){
   if(!v||typeof v!=='object'||Array.isArray(v)||![Object.prototype,null].includes(Object.getPrototypeOf(v)))fail('object',path);
   for(const key of Object.keys(v))if(!keys.includes(key))fail('unknown-field',`${path}.${key}`);
@@ -35,8 +43,7 @@ export function validateSelector(value,path='$.selector'){
 export function validateRule(value,{builtin=false}={}){
   object(value,['schemaVersion','id','version','name','source','courses','keywords','images','attachments'],'$');
   if(value.schemaVersion!==1)fail('schema-version','$.schemaVersion');
-  str(value.id,'$.id');
-  if(!/^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)+$/.test(value.id)||(!builtin&&value.id.startsWith('builtin.')))fail('id','$.id');
+  validateRuleId(value.id,{builtin});
   if(typeof value.version!=='string'||!/^\d{1,6}\.\d{1,6}\.\d{1,6}$/.test(value.version))fail('version','$.version');
   if(!['gmail','moodle','ed'].includes(value.source))fail('source','$.source');
   object(value.name,['en','zh_CN','zh_TW'],'$.name');str(value.name.en,'$.name.en');

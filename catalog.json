@@ -2,44 +2,44 @@
   "schemaVersion": 1,
   "rules": [
     {
-      "id": "community.demo1000.ed-images",
+      "id": "community.example.ed-images",
       "version": "1.0.0",
       "name": {"en": "Synthetic Ed example", "zh_CN": "Ed 合成示例", "zh_TW": "Ed 合成範例"},
       "source": "ed",
       "courses": ["DEMO1000"],
       "path": "examples/DEMO1000/demo-ed.json",
       "demo": true,
-      "sha256": "4602011fd3bdf858e58a2c6aa9e9733b0b192e72a42ec28eae2df1aaebd920d9"
+      "sha256": "f2229664dd88a0e212dd573c6aa8f7d32ac5929811afdd4c790ff03a36b0dcdb"
     },
     {
-      "id": "community.demo1000.gmail-images",
+      "id": "community.example.gmail-images",
       "version": "1.0.0",
       "name": {"en": "Synthetic Gmail example", "zh_CN": "Gmail 合成示例", "zh_TW": "Gmail 合成範例"},
       "source": "gmail",
       "courses": ["DEMO1000"],
       "path": "examples/DEMO1000/demo-gmail.json",
       "demo": true,
-      "sha256": "7fe9ccfc6c0f4118a980de08e5355dc2a18d75987f99c61f066c7183eff3f043"
+      "sha256": "f5f5341fb4825bfef4491e775e9caaa7966d142a71c4871b0110efd6fcd64fb3"
     },
     {
-      "id": "community.demo1000.moodle-images",
+      "id": "community.example.moodle-images",
       "version": "1.0.0",
       "name": {"en": "Synthetic Moodle example", "zh_CN": "Moodle 合成示例", "zh_TW": "Moodle 合成範例"},
       "source": "moodle",
       "courses": ["DEMO1000"],
       "path": "examples/DEMO1000/demo-moodle.json",
       "demo": true,
-      "sha256": "399c0860225c4fa7d28fff8ea289b93c368d3fea0cee36567e4df6ca1a2174a3"
+      "sha256": "b71db053e304fecb142325e2ae391aeba0658e9de033c128cac1cbfd32a9c588"
     },
     {
-      "id": "community.demo.shared-gmail-images",
+      "id": "community.example.shared-gmail-images",
       "version": "1.0.0",
       "name": {"en": "Synthetic shared Gmail example", "zh_CN": "Gmail 多课程合成示例", "zh_TW": "Gmail 多課程合成範例"},
       "source": "gmail",
       "courses": ["DEMO1000", "DEMO2000"],
       "path": "examples/shared/demo-shared-gmail.json",
       "demo": true,
-      "sha256": "a9ffe1ece5d53b8f72b00f8ec788e207a4ceefa094157174a91f37174d76be11"
+      "sha256": "0c0467d2f781804498c52e40f87e7d20b9c0967a6551a1be84d03babbd153b4c"
     }
   ]
 }

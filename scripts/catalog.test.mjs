@@ -2,10 +2,23 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {test} from 'node:test';
 import * as catalogModule from './catalog.mjs';
+import {validateRuleId} from '../toolkit/format.js';
+import {readFile} from 'node:fs/promises';
+import Ajv from 'ajv';
+
+test('community toolkit and published schema reject reserved IDs without rejecting DEMO courses',async()=>{
+ const schema=JSON.parse(await readFile(new URL('../schema/source-rule.v1.schema.json',import.meta.url)));
+ const check=new Ajv().compile(schema.properties.id);
+ for(const [id,code] of [[null,'id-type'],['','id-empty'],['a.'.padEnd(257,'a'),'id-length'],['Alice.Rule','id-format'],['alice..rule','id-format'],['alice-rule-','id-format'],['alice','id-format'],['alice.rule\n','id-format'],['demo.alice','id-reserved'],['alice.mydemo.rule','id-reserved'],['alice.builtin-rule','id-reserved'],['Alice.BUILTIN','id-reserved']]){
+  assert.throws(()=>validateRuleId(id),e=>e.code===code&&e.path==='$.id');assert.equal(check(id),false);
+ }
+ assert.equal(validateRuleId('community.example.gmail-images'),'community.example.gmail-images');assert.equal(check('community.example.gmail-images'),true);
+ const {catalog,files}=sample();assert.equal(validate(catalog,files),1);assert.deepEqual(catalog.rules[0].courses,['DEMO1000']);
+});
 
 const rule = {
   schemaVersion: 1,
-  id: 'community.demo1000.gmail-images',
+  id: 'community.example.gmail-images',
   version: '1.0.0',
   name: {en: 'Synthetic Gmail example', zh_CN: 'Gmail demo', zh_TW: 'Gmail demo'},
   source: 'gmail',
@@ -50,7 +63,7 @@ test('rejects whitespace-only file changes even when parsed JSON is identical', 
 });
 
 for (const [field, value] of Object.entries({
-  id: 'community.demo2000.gmail-images', version: '2.0.0', source: 'ed',
+  id: 'community.other.gmail-images', version: '2.0.0', source: 'ed',
   courses: ['DEMO2000'], name: {...rule.name, en: 'Wrong name'},
 })) {
   test(`rejects catalogue ${field} drift`, () => {

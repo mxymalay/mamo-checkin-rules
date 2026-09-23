@@ -8,7 +8,7 @@
   "then": {"properties": {"source": {"const": "ed"}}},
   "properties": {
     "schemaVersion": {"const": 1},
-    "id": {"type": "string", "maxLength": 256, "pattern": "^(?!builtin\\.)[a-z][a-z0-9]*(?:[.-][a-z0-9]+)+$"},
+    "id": {"type": "string", "minLength": 1, "maxLength": 256, "pattern": "^(?!.*(?:builtin|demo))[a-z][a-z0-9]*(?:[.-][a-z0-9]+)+(?![\\s\\S])"},
     "version": {"type": "string", "pattern": "^\\d{1,6}\\.\\d{1,6}\\.\\d{1,6}$"},
     "name": {"type": "object", "additionalProperties": false, "required": ["en"], "properties": {"en": {"$ref": "#/definitions/text"}, "zh_CN": {"$ref": "#/definitions/text"}, "zh_TW": {"$ref": "#/definitions/text"}}},
     "source": {"enum": ["gmail", "moodle", "ed"]},

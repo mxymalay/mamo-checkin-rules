@@ -78,7 +78,7 @@
 npm test</pre>
       <p>Four demos cover 30 fixture cases. Catalogue checks verify exact metadata and SHA-256 of raw UTF-8 rule bytes, including whitespace and the final newline.</p>
       <p>In a compatible extension's <strong>developer mode</strong>, compare <strong>Community only</strong> and <strong>Actual combination</strong>. Inspect found images and exclusion reasons; OCR is optional. Tests do not submit attendance or save formal attendance records.</p>
-      <p>Authors choose IDs such as <code>author.course.source</code>. <code>builtin.*</code> is reserved. A successful fixture is not proof of correct real-course verification, OCR or submission.</p>
+      <p>Authors choose IDs such as <code>alice.fit5122.moodle</code>: at most 256 characters, starting with a lowercase ASCII letter, with lowercase letters/digits separated by single dots or hyphens and at least one separator. No whitespace, uppercase, repeated or trailing separators. Non-built-in IDs cannot contain <code>builtin</code> or <code>demo</code> anywhere, case-insensitively. Examples use <code>community.example.*</code>; DEMO course identifiers are unchanged. There are no old-ID aliases. A successful fixture is not proof of correct real-course verification, OCR or submission.</p>
     </section>
     <section id="chinese" lang="zh-CN" aria-labelledby="chinese-title">
       <h2 id="chinese-title">中文：离线演示</h2>
@@ -91,7 +91,7 @@ npm test</pre>
       <p>绿色边框代表已验证的单条消息根节点，候选图片在其内部；引用、头像、禁止域名、作者排除图片会被过滤，其他消息不能通过此根节点读取。图示不包含真实图片或签到码；HTML 中的网址仅为测试字符串。</p>
       <h3>3. 验证和测试</h3>
       <p>Node 22+ 下执行上方命令，验证 4 个示例的 30 个样例以及目录元数据、原始 UTF-8 字节摘要。只有开发者模式提供规则测试：对比“仅社区”和“实际组合”，查看图片与过滤原因，可选 OCR；不提交签到、不保存正式记录。</p>
-      <p>作者自选 ID，例如 <code>author.course.source</code>；<code>builtin.*</code> 保留。摘要包含空白与末尾换行，不是重新序列化 JSON。目录没有远程自动更新，规则通过测试也不等于真实 OCR 或签到正确。</p>
+      <p>作者自选 ID，例如 <code>alice.fit5122.moodle</code>；最多 256 字符，以小写 ASCII 字母开头，小写字母/数字用单个点或连字符分隔，至少一个分隔符，无空白、大写、连续或末尾分隔符。非内置 ID 的任何位置均不得含 <code>builtin</code> 或 <code>demo</code>，不区分大小写。示例使用 <code>community.example.*</code>，DEMO 课程标识不变，不提供旧 ID 别名。摘要包含空白与末尾换行，不是重新序列化 JSON。目录没有远程自动更新，规则通过测试也不等于真实 OCR 或签到正确。</p>
     </section>
   </main>
   <footer><a href="../README.md">Full authoring guide / 完整编写指南</a> | <a href="../catalog.json">Static catalogue / 静态目录</a></footer>

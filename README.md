@@ -17,7 +17,7 @@ These examples target compatible source-rule builds of [Mamo Check-in](https://g
 | [demo-ed.json](examples/DEMO1000/demo-ed.json) | Ed / DEMO1000 | Images plus existing Ed attachment-link selectors | [7 cases](fixtures/demo-ed/) |
 | [demo-shared-gmail.json](examples/shared/demo-shared-gmail.json) | Gmail / DEMO1000, DEMO2000 | One layout shared by two explicitly listed courses | [9 cases](fixtures/demo-shared-gmail/) |
 
-The example IDs and rule contents remain unchanged; files now live in course folders. The shared demo tests both courses, empty/unverified-course rejection and author-image exclusion. Single-course demos reject DEMO2000 as the wrong course. Every demo covers missing images, decoration, quoted content, separate messages and prohibited hosts. Ed attachment selectors illustrate the allowed format; these fixtures do not prove actual attachment downloads or OCR.
+The canonical example IDs are `community.example.gmail-images`, `community.example.moodle-images`, `community.example.ed-images` and `community.example.shared-gmail-images`. Old IDs have no aliases or automatic migration; invalid installed copies can be removed and reimported. Course folders, DEMO1000/DEMO2000 course identifiers and selectors are unchanged. The shared demo tests both courses, empty/unverified-course rejection and author-image exclusion. Single-course demos reject DEMO2000 as the wrong course. Every demo covers missing images, decoration, quoted content, separate messages and prohibited hosts. Ed attachment selectors illustrate the allowed format; these fixtures do not prove actual attachment downloads or OCR.
 
 Open [docs/demo.html](docs/demo.html) from a local checkout for an English/Chinese walkthrough. It is a static offline explanation, not an extension screenshot or live attendance page. No scripts, remote images, forms, login or submission are involved.
 
@@ -41,7 +41,7 @@ A shared package lists both courses in `courses`, but still has exactly one `sou
 
 1. Read [AGENTS.md](AGENTS.md) and the [v1 schema](schema/source-rule.v1.schema.json).
 2. Obtain a small, manually sanitized DOM sample from a verified message/post root. A screenshot alone cannot establish CSS selectors.
-3. Copy the nearest example and choose a stable ID such as `author.course.source` or `alice.demo1000.gmail`. The demos' `community.` prefix is only a naming convention, not import origin. **`builtin.*` is reserved; imports cannot override built-ins.**
+3. Copy the nearest example and choose a stable ID such as `author.course.source` or `alice.fit5122.moodle`. IDs must be nonempty strings of at most 256 characters, starting with a lowercase ASCII letter, with lowercase letters/digits separated by single dots or hyphens. At least one separator is required; no whitespace, uppercase, repeated or trailing separators. **`builtin` and `demo` are forbidden anywhere in a non-built-in ID, case-insensitively.** Only the trusted extension loader can exempt built-ins; no JSON field grants that exemption. The examples' `community.` prefix is only a naming convention, not import origin. DEMO course identifiers and catalogue `demo: true` are unaffected.
 4. Set the source, courses, literal keywords and selectors. Use a distinct ID for a distinct package; increment the three-part `version` when changing a published package.
 5. Add positive and negative `*.fixture.json` cases under `fixtures/<example-name>/`. Every course in a shared demo needs a positive case. Keep published demos synthetic.
 6. Update [catalog.json](catalog.json) to match the example's metadata and exact file digest. All current entries have `demo: true`.
@@ -105,7 +105,7 @@ Submit JSON, sanitized fixtures and the catalogue entry for review, with expecte
 | [demo-ed.json](examples/DEMO1000/demo-ed.json) | Ed / DEMO1000 | 图片与现有附件链接选择器；7 个样例 |
 | [demo-shared-gmail.json](examples/shared/demo-shared-gmail.json) | Gmail / DEMO1000、DEMO2000 | 两门课程共享布局；9 个样例 |
 
-原有三个示例的 ID 与文件内容保持不变。共享示例分别测试两门课程，拒绝未验证/空课程并排除作者图片；单课程示例将 DEMO2000 作为错误课程。各示例覆盖缺图、装饰图、引用、独立消息边界、禁止的图片域名。Ed 示例展示附件选择器格式，不代表已验证真实附件下载或 OCR。
+示例的规范 ID 为 `community.example.gmail-images`、`community.example.moodle-images`、`community.example.ed-images` 和 `community.example.shared-gmail-images`。旧 ID 不提供别名或自动迁移；无效的已安装副本可删除后重新导入。课程目录、DEMO1000/DEMO2000 课程标识和选择器保持不变。共享示例分别测试两门课程，拒绝未验证/空课程并排除作者图片；单课程示例将 DEMO2000 作为错误课程。各示例覆盖缺图、装饰图、引用、独立消息边界、禁止的图片域名。Ed 示例展示附件选择器格式，不代表已验证真实附件下载或 OCR。
 
 [离线演示页](docs/demo.html) 可在本地直接打开，无脚本、远程图片、登录、表单或提交功能。它是说明文档，不是真实扩展界面截图或签到页面。
 
@@ -127,7 +127,7 @@ Submit JSON, sanitized fixtures and the catalogue entry for review, with expecte
 
 ### 编写与验证
 
-先读 [AGENTS.md](AGENTS.md) 和 [v1 规范](schema/source-rule.v1.schema.json)。准备手动脱敏的、已验证消息/帖子根节点内的 DOM，不要凭截图猜选择器。复制最接近的示例，使用作者自选的稳定 ID，例如 `author.course.source` 或 `alice.demo1000.gmail`。示例的 `community.` 只是命名习惯，不决定来源。**`builtin.*` 保留，导入不得覆盖内置规则。**
+先读 [AGENTS.md](AGENTS.md) 和 [v1 规范](schema/source-rule.v1.schema.json)。准备手动脱敏的、已验证消息/帖子根节点内的 DOM，不要凭截图猜选择器。复制最接近的示例，使用作者自选的稳定 ID，例如 `author.course.source` 或 `alice.fit5122.moodle`。ID 必须是非空字符串，最多 256 字符，以小写 ASCII 字母开头；小写字母和数字之间用单个点或连字符分隔，至少有一个分隔符，不得含空白、大写、连续或末尾分隔符。**非内置 ID 的任何位置均不得包含 `builtin` 或 `demo`，不区分大小写。** 仅可信内置加载器可豁免，JSON 字段不能申请豁免。示例的 `community.` 只是命名习惯，不决定来源；DEMO 课程标识和目录 `demo: true` 不受影响。
 
 设置平台、课程、字面关键词和选择器；在 `fixtures/<示例名>/` 添加正反样例，共享示例需覆盖每门课程。已发布内容变更须提高三段式 `version`，不同包用不同 ID。演示继续使用合成数据。同步更新 `catalog.json` 的元数据及原始文件摘要，当前所有示例标记 `demo: true`。
 

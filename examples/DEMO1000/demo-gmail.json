@@ -1,1 +1,1 @@
-{"schemaVersion":1,"id":"community.demo1000.gmail-images","version":"1.0.0","name":{"en":"Synthetic Gmail example","zh_CN":"Gmail 合成示例","zh_TW":"Gmail 合成範例"},"source":"gmail","courses":["DEMO1000"],"images":{"selectors":[".summary img"],"minWidth":30,"minHeight":20,"maxHeight":2000}}
+{"schemaVersion":1,"id":"community.example.gmail-images","version":"1.0.0","name":{"en":"Synthetic Gmail example","zh_CN":"Gmail 合成示例","zh_TW":"Gmail 合成範例"},"source":"gmail","courses":["DEMO1000"],"images":{"selectors":[".summary img"],"minWidth":30,"minHeight":20,"maxHeight":2000}}
